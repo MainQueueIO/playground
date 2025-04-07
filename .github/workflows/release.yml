@@ -34,7 +34,7 @@ jobs:
         echo "//registry.npmjs.org/:_authToken=${{ secrets.ORG_MQIO_NPM_TOKEN }}" > ~/.npmrc
     
     - name: Build dist files with tsc
-      run: bun run build.ts
+      run: bun .github/scripts/build-and-bundle.ts
     
     - name: Create Release
       run: |
