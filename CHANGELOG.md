@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 (2025-04-07)
+
+### ♻️ Refactors
+
+* **ci:** move build to scripts file ([29c4736](https://github.com/MainQueueIO/playground/commit/29c47366518fcba77835cad2e5dd04a6bba08bb8))
+
 ## 0.1.2 (2025-04-07)
 
 ### 🐛 Bug Fixes
