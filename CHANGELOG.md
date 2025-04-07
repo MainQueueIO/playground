@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 (2025-04-07)
+
+### 🐛 Bug Fixes
+
+* **config:** add license and extra config ([a20702d](https://github.com/MainQueueIO/playground/commit/a20702d45fdcf3743381ceaf739b7b94203e4f6e))
+
 ## 0.1.1 (2025-04-07)
 
 ### 🐛 Bug Fixes
