@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 (2025-04-07)
+
+### 🚀 New Features
+
+* **ci:** add jsr support ([#3](https://github.com/MainQueueIO/playground/issues/3)) ([4a0ac1a](https://github.com/MainQueueIO/playground/commit/4a0ac1afa0ad0a5fd2e045ab0e49e292519d3bc6))
+
 ## 0.1.3 (2025-04-07)
 
 ### ♻️ Refactors
