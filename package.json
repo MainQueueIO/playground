@@ -7,6 +7,27 @@
   "packageManager": "bun@1.2.8",
   "module": "src/index.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/MainQueueIO/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MainQueueIO/playground.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "bun",
+    "typescript",
+    "playground",
+    "npm",
+    "jsr",
+    "github-packages",
+    "registry"
+  ],
   "scripts": {
     "husky:prepare": "is-ci || husky",
     "lint": "bun test",
