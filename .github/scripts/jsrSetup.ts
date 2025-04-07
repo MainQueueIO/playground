@@ -10,3 +10,5 @@ const jsr = JSON.parse(readFileSync(jsrPath, "utf-8"));
 jsr.version = version;
 
 writeFileSync(jsrPath, JSON.stringify(jsr, null, 2) + "\n");
+
+console.log(version);
