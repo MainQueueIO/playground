@@ -1,0 +1,12 @@
+{
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": true,
+    "skipChecks": true,
+    "publishArgs": [
+      "--access=public"
+    ]
+  }
+}
