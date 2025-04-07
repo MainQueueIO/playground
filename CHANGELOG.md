@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 (2025-04-07)
+
+### 📦 Miscellaneous tasks
+
+* **jsr:** add version bump ([4f04773](https://github.com/MainQueueIO/playground/commit/4f047739492b5da0ddc5d69d39d9508b99755fc6))
+
 ## 0.2.1 (2025-04-07)
 
 ### 🐛 Bug Fixes
