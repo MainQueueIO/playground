@@ -9,17 +9,29 @@ jobs:
   check-before-publishing:
     name: Check before publishing
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.canary-release-version.outputs.version }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4   
+
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version-file: ".bun-version"  
+
       - name: Install Deps via Bun
         run: bun install    
+      
       - name: Run checks before publishing
-        run: bun test 
+        run: bun test
+      
+      - name: Create NPM Canary release
+        id: canary-release-version
+        run: |
+          VERSION=$(bun release:ci:canary)
+          echo "Version from script: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   publish-to-npm:
     runs-on: ubuntu-latest
@@ -30,9 +42,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
+      
+      - name: Update version in package.json
+        run: |
+          bun .github/scripts/bump-version.ts --version=${{ needs.check-before-publishing.outputs.version }} --tag=next --suffix=${{ github.run_number }}
 
       - name: Install dependencies
         run: bun install
