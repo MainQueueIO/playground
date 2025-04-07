@@ -12,14 +12,23 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4   
+
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version-file: ".bun-version"  
+
       - name: Install Deps via Bun
         run: bun install    
+      
       - name: Run checks before publishing
-        run: bun test 
+        run: bun test
+      
+      - name: Create NPM Canary release
+        run: |
+          VERSION=$(bun release:ci:canary)
+          echo "Version from script: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   publish-to-npm:
     runs-on: ubuntu-latest
@@ -28,6 +37,10 @@ jobs:
       contents: read
       packages: write # for GitHub Packages
     steps:
+      - name: Echo version from previous job
+        run: |
+          echo "Version is: ${{ needs.check-before-publishing.outputs.version }}"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -44,13 +57,6 @@ jobs:
       - name: Build
         run: bun run build.ts
 
-      - name: Create NPM Canary release
-        run: |
-          bun release:ci:canary
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ##- name: Publish to NPM (canary)
       ##  run: npm publish --tag next --access public
       ##  env:
