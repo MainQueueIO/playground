@@ -53,21 +53,21 @@ jobs:
       contents: read
       id-token: write # The OIDC ID token is used for authentication with JSR
     steps:
-    - name: Update version in jsr.json
-      run: |
-        bun .github/scripts/jsrSetup.ts
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+      
+      - name: Setup Bun.js
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: ".bun-version"
+        
+      - name: Update version in jsr.json
+        run: |
+          bun .github/scripts/jsrSetup.ts
 
-    - name: Checkout Repository
-      uses: actions/checkout@v4.2.2
+      - name: Install the dependancies
+        run: bun install
 
-    - name: Setup Bun.js
-      uses: oven-sh/setup-bun@v2
-      with:
-        bun-version-file: ".bun-version"
-
-    - name: Install the dependancies
-      run: bun install
-
-    - name: Publish JSR
-      run: |
-        bunx jsr publish
+      - name: Publish JSR
+        run: |
+          bunx jsr publish
