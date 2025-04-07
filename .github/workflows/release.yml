@@ -70,4 +70,4 @@ jobs:
 
       - name: Publish JSR
         run: |
-          bunx jsr publish
+          bunx jsr publish --allow-dirty
