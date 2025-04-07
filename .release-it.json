@@ -15,7 +15,11 @@
         }
     },
     "npm": {
-        "publish": false
+        "publish": true,
+        "skipChecks": true,
+        "publishArgs": [
+            "--access=public"
+        ]
     },
     "plugins": {
         "@release-it/conventional-changelog": {
