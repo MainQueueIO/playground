@@ -35,7 +35,8 @@
     "test:watch": "echo 'test & watch for changes is supported by bun, please run $bun test --watch'",
     "test:coverage": "echo 'test with coverage is supported by bun, please run $bun test --coverage'",
     "release:ci": "release-it --ci",
-    "release:local": "release-it"
+    "release:local": "release-it",
+    "release:ci:canary": "release-it --preRelease=next --ci --dry-run --output=json > .release.json"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
