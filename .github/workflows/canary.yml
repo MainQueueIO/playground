@@ -61,10 +61,10 @@ jobs:
       - name: Build
         run: bun .github/scripts/build-and-bundle.ts
 
-      #- name: Publish to NPM (canary)
-      #  run: npm publish --tag next --access public
-      #  env:
-      #    NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
+      - name: Publish to NPM (canary)
+        run: npm publish --tag next --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
 
   publish-to-jsr:
     name: Publish to JSR
@@ -93,4 +93,4 @@ jobs:
 
       - name: Publish to JSR (canary)
         run: |
-          bunx jsr publish --allow-dirty --dry-run
+          bunx jsr publish --allow-dirty
