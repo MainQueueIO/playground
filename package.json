@@ -36,7 +36,7 @@
     "test:coverage": "echo 'test with coverage is supported by bun, please run $bun test --coverage'",
     "release:ci": "release-it --ci",
     "release:local": "release-it",
-    "release:ci:canary": "release-it --preRelease=next --ci --dry-run --output=json > .release.json"
+    "release:ci:canary": "release-it --config .release-it-canary.json --preRelease=next --ci --dry-run --output=json > .release.json"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
