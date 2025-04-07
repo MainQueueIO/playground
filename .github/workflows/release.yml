@@ -53,6 +53,10 @@ jobs:
       contents: read
       id-token: write # The OIDC ID token is used for authentication with JSR
     steps:
+    - name: Update version in jsr.json
+      run: |
+        bun .github/scripts/jsrSetup.ts
+
     - name: Checkout Repository
       uses: actions/checkout@v4.2.2
 

@@ -2,6 +2,9 @@
 
 ## Badges
 
+[![npm version](https://img.shields.io/npm/v/@mainqueueio/playground?color=cb0000&logo=npm)](https://www.npmjs.com/package/@mainqueueio/playground)
+
+
 [![JSR Scope](https://jsr.io/badges/@mainqueueio)](https://jsr.io/@mainqueueio)
 [![JSR](https://jsr.io/badges/@mainqueueio/playground)](https://jsr.io/@mainqueueio/playground)
 [![JSR Score](https://jsr.io/badges/@mainqueueio/playground/score)](https://jsr.io/@mainqueueio/playground)
