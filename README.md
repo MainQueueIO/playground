@@ -1,5 +1,12 @@
 # playground
 
+## Badges
+
+[![JSR Scope](https://jsr.io/badges/@mainqueueio)](https://jsr.io/@mainqueueio)
+[![JSR](https://jsr.io/badges/@mainqueueio/playground)](https://jsr.io/@mainqueueio/playground)
+[![JSR Score](https://jsr.io/badges/@mainqueueio/playground/score)](https://jsr.io/@mainqueueio/playground)
+
+
 To install dependencies:
 
 ```bash

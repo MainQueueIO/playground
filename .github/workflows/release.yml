@@ -6,6 +6,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    name: Bump Version & Create Release Notes
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4.2.2
@@ -43,3 +44,26 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+  publish-jsr:
+    runs-on: ubuntu-latest
+    name: Publish to JSR
+    needs: release
+    permissions:
+      contents: read
+      id-token: write # The OIDC ID token is used for authentication with JSR
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4.2.2
+
+    - name: Setup Bun.js
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version-file: ".bun-version"
+
+    - name: Install the dependancies
+      run: bun install
+
+    - name: Publish JSR
+      run: |
+        bunx jsr publish
