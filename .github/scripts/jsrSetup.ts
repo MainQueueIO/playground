@@ -9,4 +9,4 @@ const jsrPath = new URL("../../jsr.json", import.meta.url).pathname;
 const jsr = JSON.parse(readFileSync(jsrPath, "utf-8"));
 jsr.version = version;
 
-writeFileSync(jsr, JSON.stringify(pkg, null, 2) + "\n");
+writeFileSync(jsrPath, JSON.stringify(jsr, null, 2) + "\n");
