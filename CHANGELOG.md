@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 (2025-04-07)
+
+### 🐛 Bug Fixes
+
+* **jsr:** add return type ([3f21e1e](https://github.com/MainQueueIO/playground/commit/3f21e1efe2f2b8910040859d48397b281cda3998))
+
 ## 0.2.0 (2025-04-07)
 
 ### 🚀 New Features
