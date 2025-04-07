@@ -48,7 +48,8 @@ jobs:
       
       - name: Update version in package.json
         run: |
-          VERSION=${{ needs.check-before-publishing.outputs.version }}
+          SHA=$(git rev-parse --short HEAD)
+          VERSION=$(bun .github/scripts/bump-version.ts --version ${{ needs.check-before-publishing.outputs.version }} --tag=next --suffix=${{ github.run_number }})
           jq ".version = \"$VERSION\"" package.json > tmp.json && mv tmp.json package.json
 
       - name: Install dependencies
