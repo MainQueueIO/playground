@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5 (2025-04-07)
+
+### 📦 Miscellaneous tasks
+
+* add console log for testing ([4c6768b](https://github.com/MainQueueIO/playground/commit/4c6768b658114d9fdf0148b66469d485a802c5bf))
+
 ## 0.2.4 (2025-04-07)
 
 ### 🐛 Bug Fixes
