@@ -46,7 +46,7 @@ jobs:
 
       - name: Create NPM Canary release
         run: |
-          bun release:ci
+          bun release:ci:canary
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
