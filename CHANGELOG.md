@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3 (2025-04-07)
+
+### 🐛 Bug Fixes
+
+* **jsr:** workflow fix for jsr publish ([ef76f79](https://github.com/MainQueueIO/playground/commit/ef76f79867ddb9ffab0bac2999dbee5a5b4dd008))
+
 ## 0.2.2 (2025-04-07)
 
 ### 📦 Miscellaneous tasks
