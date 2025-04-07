@@ -1,0 +1,42 @@
+name: "[Release] Publish Canary Version"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  check-before-publishing:
+    name: Check before publishing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4   
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: ".bun-version"  
+      - name: Install Deps via Bun
+        run: bun install    
+      - name: Run checks before publishing
+        run: bun test 
+
+  publish-to-npm:
+    runs-on: ubuntu-latest
+    needs: check-before-publishing
+    permissions:
+      contents: read
+      packages: write # for GitHub Packages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install
+      - name: Build
+        run: bun run build.ts
+      - name: Publish to NPM (canary)
+        run: npm publish --tag next --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
