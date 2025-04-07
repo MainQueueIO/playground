@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4 (2025-04-07)
+
+### 🐛 Bug Fixes
+
+* **jsr:** add release dirty flag ([78ea823](https://github.com/MainQueueIO/playground/commit/78ea823faeeb6bb254cbdc05ae87ab3293b17147))
+
 ## 0.2.3 (2025-04-07)
 
 ### 🐛 Bug Fixes

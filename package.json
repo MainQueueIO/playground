@@ -1,6 +1,6 @@
 {
   "name": "@mainqueueio/playground",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "diegocuehdz",
   "description": "MainQueue's playground project for checking deploys, registries, and other things.",
   "license": "MIT",
