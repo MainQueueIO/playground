@@ -9,6 +9,8 @@ jobs:
   check-before-publishing:
     name: Check before publishing
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.canary-release-version.outputs.version }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4   
@@ -25,6 +27,7 @@ jobs:
         run: bun test
       
       - name: Create NPM Canary release
+        id: canary-release-version
         run: |
           VERSION=$(bun release:ci:canary)
           echo "Version from script: $VERSION"
