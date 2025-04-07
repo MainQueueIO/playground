@@ -61,6 +61,6 @@ jobs:
         run: bun .github/scripts/build-and-bundle.ts
 
       - name: Publish to NPM (canary)
-        run: bun publish --tag next --access public
+        run: npm publish --tag next --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
