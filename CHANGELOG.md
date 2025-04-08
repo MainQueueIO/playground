@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0 (2025-04-08)
+
+### 🚀 New Features
+
+* add logic for canary and default values ([019f828](https://github.com/MainQueueIO/playground/commit/019f828cb645e537208d5da3460484246285b9a5))
+
 ## 0.2.9 (2025-04-08)
 
 ### 💄 Code improvements
