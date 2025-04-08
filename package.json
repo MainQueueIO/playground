@@ -26,7 +26,8 @@
     "npm",
     "jsr",
     "github-packages",
-    "registry"
+    "registry",
+    "deno"
   ],
   "scripts": {
     "husky:prepare": "is-ci || husky",
