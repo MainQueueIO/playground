@@ -138,7 +138,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
-          CMD="npm publish --registry=https://npm.pkg.github.com/ --tag next"
+          CMD="npm publish --registry=https://npm.pkg.github.com/ --tag next --access public"
           if [[ "${{ inputs.dryRun }}" == "true" ]]; then
             CMD="$CMD --dry-run"
           fi
