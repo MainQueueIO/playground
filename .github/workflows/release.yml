@@ -54,6 +54,12 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Print package.json and jsr.json
+      run: |
+        echo "package.json:"
+        cat package.json
+        echo "jsr.json:"
+        cat jsr.json
     
   publish-jsr:
     runs-on: ubuntu-latest
@@ -65,6 +71,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
+
+      - name: Print package.json and jsr.json
+        run: |
+          echo "package.json:"
+          cat package.json
+          echo "jsr.json:"
+          cat jsr.json
       
       - name: Setup Bun.js
         uses: oven-sh/setup-bun@v2
