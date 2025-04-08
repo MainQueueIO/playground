@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6 (2025-04-08)
+
+### 🐛 Bug Fixes
+
+* **ci:** change logic for hooks in release-it ([#5](https://github.com/MainQueueIO/playground/issues/5)) ([7ffc101](https://github.com/MainQueueIO/playground/commit/7ffc1012fdb97190ff93cac563f5a575eb415222))
+
 ## 0.2.5 (2025-04-07)
 
 ### 📦 Miscellaneous tasks
