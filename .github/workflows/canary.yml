@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       dryRun:
-        description: "Run the release process in dry run mode"
+        description: "Dry Run Mode"
         type: boolean
-        default: true
-  #push:
-  #  branches: [main]
+        default: false
+  push:
+    branches: [main]
 
 jobs:
   check-before-publishing:
