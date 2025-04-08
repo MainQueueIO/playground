@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 (2025-04-08)
+
+### 📦 Miscellaneous tasks
+
+* add github packages canary and release ([131b907](https://github.com/MainQueueIO/playground/commit/131b907490253bd4ad0b5141c7518122ffe35656))
+
 ## 0.3.0 (2025-04-08)
 
 ### 🚀 New Features
