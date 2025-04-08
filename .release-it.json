@@ -22,6 +22,9 @@
       "--access=public"
     ]
   },
+  "hooks": {
+    "before:bump": "bun .github/scripts/jsrSetup.ts  --version=${version}"
+  },
   "plugins": {
     "@release-it/conventional-changelog": {
       "infile": "CHANGELOG.md",

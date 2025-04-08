@@ -35,6 +35,7 @@
     "test:watch": "echo 'test & watch for changes is supported by bun, please run $bun test --watch'",
     "test:coverage": "echo 'test with coverage is supported by bun, please run $bun test --coverage'",
     "release:ci": "release-it --ci",
+    "release:ci:version": "release-it --ci --release-version",
     "release:local": "release-it",
     "release:ci:canary": "release-it --ci --config .release-it-canary.json --preRelease=next --release-version"
   },
