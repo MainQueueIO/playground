@@ -2,8 +2,13 @@ name: "[Release] Publish Canary Version"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
+    inputs:
+      dryRun:
+        description: "Run the release process in dry run mode"
+        type: boolean
+        default: true
+  #push:
+  #  branches: [main]
 
 jobs:
   check-before-publishing:
@@ -62,7 +67,13 @@ jobs:
         run: bun .github/scripts/build-and-bundle.ts
 
       - name: Publish to NPM (canary)
-        run: npm publish --tag next --access public
+        run: |
+          CMD="npm publish --tag next --access public"
+          if [[ "${{ inputs.dryRun }}" == "true" ]]; then
+            CMD="$CMD --dry-run"
+          fi
+          echo "Running: $CMD"
+          eval "$CMD"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
 
@@ -93,4 +104,9 @@ jobs:
 
       - name: Publish to JSR (canary)
         run: |
-          bunx jsr publish --allow-dirty
+          CMD="bunx jsr publish --allow-dirty"
+          if [[ "${{ inputs.dryRun }}" == "true" ]]; then
+            CMD="$CMD --dry-run"
+          fi
+          echo "Running: $CMD"
+          eval "$CMD"

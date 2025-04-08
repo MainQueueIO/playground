@@ -2,6 +2,11 @@
 name: "[Release] Release Stable Version"
 on: 
   workflow_dispatch:
+    inputs:
+      dryRun:
+        description: "Run the release process in dry run mode"
+        type: boolean
+        default: true
 
 jobs:
   release:
@@ -39,7 +44,12 @@ jobs:
     
     - name: Create Release
       run: |
-        bun release:ci
+        CMD="bun release:ci"
+        if [[ "${{ inputs.dryRun }}" == "true" ]]; then
+          CMD="$CMD --dry-run"
+        fi
+        echo "Running: $CMD"
+        eval "$CMD"
       env:
         NODE_AUTH_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.ORG_MQIO_NPM_TOKEN }}
@@ -70,4 +80,9 @@ jobs:
 
       - name: Publish JSR
         run: |
-          bunx jsr publish --allow-dirty
+          CMD="bunx jsr publish --allow-dirty"
+          if [[ "${{ inputs.dryRun }}" == "true" ]]; then
+            CMD="$CMD --dry-run"
+          fi
+          echo "Running: $CMD"
+          eval "$CMD"
