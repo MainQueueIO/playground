@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.8 (2025-04-08)
+
+### 🧪 Tests
+
+* add prints to check release ([063ef1e](https://github.com/MainQueueIO/playground/commit/063ef1e226b50e9727cc7ff6429050eff595e304))
+
 ## 0.2.7 (2025-04-08)
 
 ### 📝 Documentation
