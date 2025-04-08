@@ -23,7 +23,7 @@
     ]
   },
   "hooks": {
-    "before:bump": "bun .github/scripts/jsrSetup.ts  --version=${version}"
+    "before:bump": "bun .github/scripts/jsrSetup.ts  --version=$(bun release:ci:version)"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
