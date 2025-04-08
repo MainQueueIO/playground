@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.9 (2025-04-08)
+
+### 💄 Code improvements
+
+* fix lint errors ([14669a3](https://github.com/MainQueueIO/playground/commit/14669a3f63bc6817809567fdea44341fda5d2fbc))
+
 ## 0.2.8 (2025-04-08)
 
 ### 🧪 Tests
