@@ -61,20 +61,19 @@ jobs:
         echo "jsr.json:"
         cat jsr.json
     
- publish-jsr:
+  publish-jsr:
     runs-on: ubuntu-latest
     name: Publish to JSR
     needs: release
     permissions:
       contents: read
-      id-token: write # The OIDC ID token is used for authentication with JSR
       id-token: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-
+        
       - name: Pull for last job changes
         run: |
           git config --global --add safe.directory "$(pwd)"
