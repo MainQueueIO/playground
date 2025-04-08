@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.7 (2025-04-08)
+
+### 📝 Documentation
+
+* add package.json new keyword ([353dd23](https://github.com/MainQueueIO/playground/commit/353dd2324d5c564489c458fbdcc4fd1b4005b108))
+
 ## 0.2.6 (2025-04-08)
 
 ### 🐛 Bug Fixes
