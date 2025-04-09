@@ -23,18 +23,22 @@ jobs:
         if: ${{ !inputs.send_as_blocks }}
         uses: slackapi/slack-github-action@v2.0.0
         with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL_CHANNEL_TEST }}
+          webhook-type: webhook-trigger
           payload: |
             {
               "text": "${{ inputs.message }}"
             }
         env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_CHANNEL_TEST }}
-            SLACK_WEBHOOK_TYPE: incoming-webhook
+            SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
       - name: Send formatted message with blocks
         if: ${{ inputs.send_as_blocks }}
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v2.0.0
         with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL_CHANNEL_TEST }}
+          webhook-type: webhook-trigger
           payload: |
             {
               "blocks": [
@@ -66,4 +70,4 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_CHANNEL_TEST }}
-          SLACK_WEBHOOK_TYPE: incoming-webhook
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
