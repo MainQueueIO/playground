@@ -7,6 +7,12 @@ on:
         description: "Dry Run Mode"
         type: boolean
         default: false
+  workflow_call: # This workflow can be called from other workflows, specifically for PR check for upcoming release on merged PR
+    inputs:
+      dryRun:
+        description: "Dry Run Mode for called workflows"
+        type: boolean
+        default: true
   push:
     branches: [main]
 
@@ -18,7 +24,10 @@ jobs:
       version: ${{ steps.canary-release-version.outputs.version }}
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v4   
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history
+          ref: ${{ github.head_ref || github.ref_name }}  # Properly checkout the PR branch or main branch
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
