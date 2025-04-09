@@ -42,6 +42,7 @@ jobs:
   check-pullrequest-canary-release:
     name: Check for Canary Release on merge
     needs: [check-pullrequest-label, check-pullrequest-title]
+    if: github.event.pull_request.draft == false
     uses: ./.github/workflows/canary.yml
     with:
       dryRun: true
