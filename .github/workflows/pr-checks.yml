@@ -1,4 +1,4 @@
-name: "[PR] Semantic Pull Request"
+name: "[PR] Validate Title, Labels and Registries"
 on:
   pull_request:
     types:
@@ -17,7 +17,7 @@ jobs:
       - name: Platform label
         uses: agilepathway/label-checker@v1.6.65
         with:
-          any_of: ci,config,deps,npm,jsr,github-packages
+          any_of: ci,config,deps,npm,jsr,github-pkg
           none_of: "@:"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -37,4 +37,15 @@ jobs:
             deps
             npm
             jsr
-            github-packages
+            github-pkg
+
+  check-pullrequest-canary-release:
+    name: Check for Canary Release on merge
+    needs: [check-pullrequest-label, check-pullrequest-title]
+    uses: ./.github/workflows/canary.yml
+    with:
+      dryRun: true
+    permissions:
+      contents: read
+      packages: write
+      id-token: write

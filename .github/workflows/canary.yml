@@ -7,6 +7,12 @@ on:
         description: "Dry Run Mode"
         type: boolean
         default: false
+  workflow_call:
+    inputs:
+      dryRun:
+        description: "Dry Run Mode for called workflows"
+        type: boolean
+        default: true
   push:
     branches: [main]
 
