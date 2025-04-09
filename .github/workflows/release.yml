@@ -163,8 +163,8 @@ jobs:
     with:
       message_header: "📦 Stable Package Published"
       version: ${{ needs.release.outputs.version }}
-      npm_status: ${{ needs.release.result }}
-      jsr_status: ${{ needs.publish-to-jsr.result }}
-      github_pkg_status: ${{ needs.publish-to-github-packages.result }}
+      npm_status: ${{ needs.release.outputs.status }}
+      jsr_status: ${{ needs.publish-to-jsr.outputs.status }}
+      github_pkg_status: ${{ needs.publish-to-github-packages.outputs.status }}
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYMENTS }}
