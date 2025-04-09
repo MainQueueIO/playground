@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2 (2025-04-09)
+
+### 🐛 Bug Fixes
+
+* **ci:** add release it config for skipping ([f4c82d3](https://github.com/MainQueueIO/playground/commit/f4c82d377c446e64b82ea544bd95511e36fafa30))
+
 ## 0.3.1 (2025-04-08)
 
 ### 📦 Miscellaneous tasks
