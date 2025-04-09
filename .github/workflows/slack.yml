@@ -1,4 +1,4 @@
-name: "Test Slack Message"
+name: "[Messaging] Slack - Test Message"
 
 on:
   workflow_dispatch:
