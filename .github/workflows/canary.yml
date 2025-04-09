@@ -117,7 +117,7 @@ jobs:
 
       - name: Publish to JSR (canary)
         run: |
-          CMD="bunx jsr publish"
+          CMD="bunx jsr publish  --allow-dirty"
           if [[ "${{ inputs.dryRun }}" == "true" ]]; then
             CMD="$CMD --dry-run"
           fi
@@ -173,7 +173,7 @@ jobs:
     if: always() && inputs.dryRun != true # Run even if previous jobs fail, but only when not in dry run mode
     uses: ./.github/workflows/messaging-slack-publishing.yml
     with:
-      message_header: "📦 ${{ github.repository }} Canary Package Publication Status"
+      message_header: "📦 Canary Package Publication Status"
       version: ${{ needs.check-before-publishing.outputs.version }}
       npm_status: ${{ needs.publish-to-npm.result }}
       jsr_status: ${{ needs.publish-to-jsr.result }}

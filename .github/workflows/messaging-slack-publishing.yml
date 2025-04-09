@@ -58,7 +58,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Version *${{ inputs.version }}* publication results:"
+                    "text": "${{ github.repository }} - Version *${{ inputs.version }}* publication results:"
                   }
                 },
                 {
