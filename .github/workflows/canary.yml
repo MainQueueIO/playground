@@ -7,7 +7,7 @@ on:
         description: "Dry Run Mode"
         type: boolean
         default: false
-  workflow_call:
+  workflow_call: # This workflow can be called from other workflows, specifically for PR check for upcoming release on merged PR
     inputs:
       dryRun:
         description: "Dry Run Mode for called workflows"
