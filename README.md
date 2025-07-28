@@ -25,4 +25,5 @@ This project was created using `bun init` in bun v1.2.7. [Bun](https://bun.sh) i
 Test of feature to test release it
 Test of fix to test release it
 Test of chore to test release it
-Test of docss to test release it
+Test of docs to test release it
+Test of style to test release it
