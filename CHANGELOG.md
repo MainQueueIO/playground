@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3 (2025-07-28)
+
+### 🧪 Tests
+
+* **ci:** remove gitmoji in releaseName ([#25](https://github.com/MainQueueIO/playground/issues/25)) ([305cab3](https://github.com/MainQueueIO/playground/commit/305cab3cf6adc5251247269de4d494271d51fdb4))
+
 ## 0.4.2 (2025-07-28)
 
 ### 🧪 Tests
