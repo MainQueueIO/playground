@@ -41,18 +41,18 @@
     "release:ci:canary": "release-it --ci --config .release-it-canary.json --preRelease=next --release-version"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@release-it/conventional-changelog": "^10.0.1",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@release-it/conventional-changelog": "^10.0.0",
     "@types/bun": "latest",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
-    "release-it": "^19.0.4"
+    "release-it": "^18.1.2"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "overrides": {
-    "conventional-changelog-conventionalcommits": "9.1.0"
+    "conventional-changelog-conventionalcommits": "8.0.0"
   }
 }
