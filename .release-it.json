@@ -6,7 +6,7 @@
   },
   "github": {
     "release": true,
-    "releaseName": "v${version}",
+    "releaseName": "v${version} 🔖",
     "autoGenerate": true,
     "tokenRef": "GITHUB_TOKEN",
     "comments": {
