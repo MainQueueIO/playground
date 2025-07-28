@@ -21,12 +21,3 @@ bun run index.ts
 ```
 
 This project was created using `bun init` in bun v1.2.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-
-Test of feature to test release it
-Test of fix to test release it
-Test of chore to test release it
-Test of docs to test release it
-Test of style to test release it
-Test of refactor to test release it
-Test of perf to test release it
-Test of test to test release it

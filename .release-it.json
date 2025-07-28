@@ -63,6 +63,10 @@
           {
             "section": "🧪 Tests",
             "type": "test"
+          },
+          {
+            "section": "⏪ Rollbacks",
+            "type": "revert"
           }
         ]
       }
