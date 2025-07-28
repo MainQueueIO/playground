@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 (2025-07-28)
+
+### 🚀 New Features
+
+* **ci:** add bookmark emoji in commit ([#20](https://github.com/MainQueueIO/playground/issues/20)) ([2856b21](https://github.com/MainQueueIO/playground/commit/2856b2193b13cdb921287dc45a721868f77cdad8))
+
 ## 0.3.3 (2025-07-28)
 
 ### 📦 Miscellaneous tasks
