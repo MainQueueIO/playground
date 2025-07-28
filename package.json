@@ -53,6 +53,6 @@
     "typescript": "^5"
   },
   "overrides": {
-    "conventional-changelog-conventionalcommits": "8.0.0"
+    "conventional-changelog-conventionalcommits": "9.1.0"
   }
 }
