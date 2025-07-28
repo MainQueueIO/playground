@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2 (2025-07-28)
+
+### 🧪 Tests
+
+* **ci:** check if emoji goes in releaseName ([#23](https://github.com/MainQueueIO/playground/issues/23)) ([dc7d266](https://github.com/MainQueueIO/playground/commit/dc7d266ac3effd218e9ffb7d76eeebb744bcbbbb))
+
 ## 0.4.1 (2025-07-28)
 
 ### ⏪ Rollbacks
