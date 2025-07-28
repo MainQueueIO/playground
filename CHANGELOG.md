@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 (2025-07-28)
+
+### ⏪ Rollbacks
+
+* **deps:** rollback all libs to previous to check changelog ([#21](https://github.com/MainQueueIO/playground/issues/21)) ([381312d](https://github.com/MainQueueIO/playground/commit/381312d36f52136e9276b5027a4aab0c9eda0a38))
+
 ## 0.4.0 (2025-07-28)
 
 ### 🚀 New Features
