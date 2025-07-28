@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3 (2025-07-28)
+
+### 📦 Miscellaneous tasks
+
+* **deps:** bump release-it and commitlint dependencies to latest ([#9](https://github.com/MainQueueIO/playground/issues/9)) ([583702c](https://github.com/MainQueueIO/playground/commit/583702c69881ab2b5bd8e8836667b11235ae7e78))
+
 ## 0.3.2 (2025-04-09)
 
 ### 🐛 Bug Fixes
