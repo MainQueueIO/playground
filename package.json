@@ -4,7 +4,7 @@
   "author": "diegocuehdz",
   "description": "MainQueue's playground project for checking deploys, registries, and other things.",
   "license": "MIT",
-  "packageManager": "bun@1.2.8",
+  "packageManager": "bun@1.2.19",
   "module": "src/index.ts",
   "type": "module",
   "files": [
