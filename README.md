@@ -29,3 +29,4 @@ Test of docs to test release it
 Test of style to test release it
 Test of refactor to test release it
 Test of perf to test release it
+Test of test to test release it
