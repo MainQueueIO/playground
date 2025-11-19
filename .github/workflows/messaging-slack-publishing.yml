@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send to Slack
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v2
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: webhook-trigger
@@ -65,7 +65,7 @@ jobs:
                   "type": "section",
                   "fields": [
                     {
-                      "type": "mrkdwn", 
+                      "type": "mrkdwn",
                       "text": "*NPM:* ${{ inputs.npm_status == 'success' && '✅ Success' || (inputs.npm_status == 'failure' && '❌ Failed' || '⏭️ Skipped') }}"
                     },
                     {
