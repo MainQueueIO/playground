@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 (2025-11-19)
+
+### Features
+
+* **ci:** add separate commands and separate ([#34](undefined/undefined/undefined/issues/34)) 146e651
+
 ## 0.5.1 (2025-11-19)
 
 ### Reverts
