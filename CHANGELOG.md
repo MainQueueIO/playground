@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 (2025-11-19)
+
+### Features
+
+* **deps:** add mainqueue.io linter package ([#27](undefined/undefined/undefined/issues/27)) e2d55f6
+
 ## 0.4.3 (2025-07-28)
 
 ### 🧪 Tests
