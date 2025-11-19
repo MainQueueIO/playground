@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.1 (2025-11-19)
+
+### Reverts
+
+* **ci:** bump to latest release it deps ([#31](undefined/undefined/undefined/issues/31)) 5bc8c09
+
 ## 0.5.0 (2025-11-19)
 
 ### Features
