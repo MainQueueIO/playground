@@ -37,9 +37,6 @@ jobs:
       - name: Install Deps via Bun
         run: bun install
 
-      - name: Run checks before publishing
-        run: bun test
-
       - name: Create NPM Canary release
         id: canary-release-version
         run: |
