@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Send plain text message
         if: ${{ !inputs.send_as_blocks }}
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v2
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL_CHANNEL_TEST }}
           webhook-type: webhook-trigger
@@ -32,7 +32,7 @@ jobs:
 
       - name: Send formatted message with blocks
         if: ${{ inputs.send_as_blocks }}
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v2
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL_CHANNEL_TEST }}
           webhook-type: webhook-trigger

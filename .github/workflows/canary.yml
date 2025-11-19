@@ -24,22 +24,22 @@ jobs:
       version: ${{ steps.canary-release-version.outputs.version }}
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
-          fetch-depth: 0  # Fetch all history
-          ref: ${{ github.head_ref || github.ref_name }}  # Properly checkout the PR branch or main branch
+          fetch-depth: 0 # Fetch all history
+          ref: ${{ github.head_ref || github.ref_name }} # Properly checkout the PR branch or main branch
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version-file: ".bun-version"  
+          bun-version-file: ".bun-version"
 
       - name: Install Deps via Bun
-        run: bun install    
-      
+        run: bun install
+
       - name: Run checks before publishing
         run: bun test
-      
+
       - name: Create NPM Canary release
         id: canary-release-version
         run: |
@@ -58,11 +58,11 @@ jobs:
       packages: write # for GitHub Packages
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      
+        uses: actions/checkout@v5
+
       - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
-      
+        uses: oven-sh/setup-bun@v2
+
       - name: Update version in package.json
         run: |
           bun .github/scripts/bump-version.ts --version=${{ needs.check-before-publishing.outputs.version }} --tag=next --suffix=${{ github.run_number }}
@@ -99,12 +99,12 @@ jobs:
       id-token: write # The OIDC ID token is used for authentication with JSR
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      
+        uses: actions/checkout@v5
+
       - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
-      
-      - name: Update version in package.json & jsr.json 
+        uses: oven-sh/setup-bun@v2
+
+      - name: Update version in package.json & jsr.json
         run: |
           bun .github/scripts/bump-version.ts --version=${{ needs.check-before-publishing.outputs.version }} --tag=next --suffix=${{ github.run_number }}
           bun .github/scripts/jsrSetup.ts
@@ -135,11 +135,11 @@ jobs:
       packages: write # for GitHub Packages
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      
+        uses: actions/checkout@v5
+
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
-      
+
       - name: Update version in package.json
         run: |
           bun .github/scripts/bump-version.ts --version=${{ needs.check-before-publishing.outputs.version }} --tag=next --suffix=${{ github.run_number }}
@@ -164,12 +164,13 @@ jobs:
 
   notify-slack:
     name: Notify Slack
-    needs: [
-      check-before-publishing, 
-      publish-to-npm, 
-      publish-to-jsr, 
-      publish-to-github-packages
-    ]
+    needs:
+      [
+        check-before-publishing,
+        publish-to-npm,
+        publish-to-jsr,
+        publish-to-github-packages,
+      ]
     if: always() && inputs.dryRun != true # Run even if previous jobs fail, but only when not in dry run mode
     uses: ./.github/workflows/messaging-slack-publishing.yml
     with:
