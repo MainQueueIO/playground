@@ -49,6 +49,6 @@ jobs:
       releaseType: canary
       dryRun: true
     permissions:
-      contents: read
+      contents: write
       packages: write
       id-token: write
