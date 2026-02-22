@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.1](https://github.com/MainQueueIO/playground/compare/0.6.0...0.6.1) (2026-02-22)
+
+### 🐛 Bug Fixes
+
+* **ci:** add fallback to gh variable get in canary build step ([#38](https://github.com/MainQueueIO/playground/issues/38)) ([2c2eb13](https://github.com/MainQueueIO/playground/commit/2c2eb1336604ca09a2e47c67a88760ffd67953fe))
+* **ci:** remove registry-url and upgrade npm to unblock OIDC trusted publishing ([#36](https://github.com/MainQueueIO/playground/issues/36)) ([460dcc3](https://github.com/MainQueueIO/playground/commit/460dcc3ddef5ee13baafd0eebf82933bf02bb0ad))
+
+### 📦 Miscellaneous tasks
+
+* **deps:** bump dependencies and acrivate OIDC for releases ([#35](https://github.com/MainQueueIO/playground/issues/35)) ([0a25fbe](https://github.com/MainQueueIO/playground/commit/0a25fbe503cadace48a837c7868e13323ddfa67d))
+
+### ♻️ Refactors
+
+* **ci:** collapse Slack notify jobs and fix canary version in notification ([#40](https://github.com/MainQueueIO/playground/issues/40)) ([bda2fb6](https://github.com/MainQueueIO/playground/commit/bda2fb6315acffc69d936f0d9210ed6d35dc2ce4))
+* **ci:** replace github.run_number with persistent CANARY_BUILD_NUMBER variable ([#37](https://github.com/MainQueueIO/playground/issues/37)) ([14a91dd](https://github.com/MainQueueIO/playground/commit/14a91dd6cf5a12c635f3bc68cbd90038b5d4fc23))
+
+### ⏪ Rollbacks
+
+* **ci:** revert CANARY_BUILD_NUMBER variable, restore run_number ([#39](https://github.com/MainQueueIO/playground/issues/39)) ([5652d47](https://github.com/MainQueueIO/playground/commit/5652d47422a10a6f8b124b0d585b409ab75fade4))
+
 ## 0.6.0 (2025-11-19)
 
 ### Features
