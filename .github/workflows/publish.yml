@@ -62,7 +62,7 @@ jobs:
         id: canary-counter
         run: |
           if [[ "${{ steps.set-release-type.outputs.release-type }}" == "canary" && "${{ inputs.dryRun }}" != "true" ]]; then
-            CURRENT=$(gh variable get CANARY_BUILD_NUMBER --repo ${{ github.repository }})
+            CURRENT=$(gh variable get CANARY_BUILD_NUMBER --repo ${{ github.repository }} 2>/dev/null || echo "0")
             NEXT=$((CURRENT + 1))
             gh variable set CANARY_BUILD_NUMBER --body "$NEXT" --repo ${{ github.repository }}
             echo "build-number=$NEXT" >> $GITHUB_OUTPUT
