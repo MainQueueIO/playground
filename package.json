@@ -4,7 +4,7 @@
   "author": "diegocuehdz",
   "description": "MainQueue's playground project for checking deploys, registries, and other things.",
   "license": "MIT",
-  "packageManager": "bun@1.3.2",
+  "packageManager": "bun@1.3.9",
   "module": "src/index.ts",
   "type": "module",
   "files": [
@@ -50,21 +50,21 @@
     "release:ci:canary": "release-it --ci --config .release-it-canary.json --preRelease=next --release-version --verbose"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
     "@mainqueueio/eslint-config": "0.1.6-next.26",
-    "@release-it/conventional-changelog": "^10.0.0",
-    "@types/bun": "1.3.2",
-    "@typescript/native-preview": "7.0.0-dev.20251118.1",
+    "@release-it/conventional-changelog": "^10.0.5",
+    "@types/bun": "1.3.9",
+    "@typescript/native-preview": "7.0.0-dev.20260221.1",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
-    "release-it": "^18.1.2"
+    "release-it": "^19.2.4"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "overrides": {
-    "conventional-changelog-conventionalcommits": "8.0.0"
+    "conventional-changelog-conventionalcommits": "9.1.0"
   },
   "engines": {
     "node": ">=22"
