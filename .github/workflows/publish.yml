@@ -34,6 +34,7 @@ jobs:
     outputs:
       version: ${{ steps.release-version.outputs.version }}
       release-type: ${{ steps.set-release-type.outputs.release-type }}
+      display-version: ${{ steps.display-version.outputs.display-version }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v5
@@ -65,6 +66,16 @@ jobs:
           fi
           echo "Version from script: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Compute display version
+        id: display-version
+        run: |
+          if [[ "${{ steps.set-release-type.outputs.release-type }}" == "canary" ]]; then
+            BASE=$(echo "${{ steps.release-version.outputs.version }}" | cut -d'-' -f1)
+            echo "display-version=${BASE}-next.${{ github.run_number }}" >> $GITHUB_OUTPUT
+          else
+            echo "display-version=${{ steps.release-version.outputs.version }}" >> $GITHUB_OUTPUT
+          fi
 
   release-stable:
     name: Bump Version & Create Release Notes
@@ -263,38 +274,20 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  notify-slack-canary:
-    name: Notify Slack (Canary)
+  notify-slack:
+    name: Notify Slack
     needs:
       - prepare
       - publish-to-npm
       - publish-to-jsr
       - publish-to-github-packages
-    if: always() && inputs.dryRun != true && needs.prepare.outputs.release-type == 'canary'
+    if: always() && inputs.dryRun != true
     uses: ./.github/workflows/messaging-slack-publishing.yml
     with:
-      message_header: "📦 Canary Package Publication Status"
-      version: ${{ needs.prepare.outputs.version }}
+      message_header: ${{ needs.prepare.outputs.release-type == 'canary' && '📦 Canary Package Publication Status' || '📦 Stable Package Published' }}
+      version: ${{ needs.prepare.outputs.display-version }}
       npm_status: ${{ needs.publish-to-npm.result }}
       jsr_status: ${{ needs.publish-to-jsr.result }}
       github_pkg_status: ${{ needs.publish-to-github-packages.result }}
     secrets:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYMENTS_CANARY }}
-
-  notify-slack-stable:
-    name: Notify Slack (Stable)
-    needs:
-      - prepare
-      - publish-to-npm
-      - publish-to-jsr
-      - publish-to-github-packages
-    if: always() && inputs.dryRun != true && needs.prepare.outputs.release-type == 'stable'
-    uses: ./.github/workflows/messaging-slack-publishing.yml
-    with:
-      message_header: "📦 Stable Package Published"
-      version: ${{ needs.prepare.outputs.version }}
-      npm_status: ${{ needs.publish-to-npm.result }}
-      jsr_status: ${{ needs.publish-to-jsr.result }}
-      github_pkg_status: ${{ needs.publish-to-github-packages.result }}
-    secrets:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEPLOYMENTS }}
+      SLACK_WEBHOOK_URL: ${{ needs.prepare.outputs.release-type == 'canary' && secrets.SLACK_WEBHOOK_URL_DEPLOYMENTS_CANARY || secrets.SLACK_WEBHOOK_URL_DEPLOYMENTS }}
