@@ -31,9 +31,12 @@ jobs:
   prepare:
     name: Prepare Release
     runs-on: ubuntu-latest
+    permissions:
+      actions: write   # needed to update CANARY_BUILD_NUMBER variable
     outputs:
       version: ${{ steps.release-version.outputs.version }}
       release-type: ${{ steps.set-release-type.outputs.release-type }}
+      canary-build-number: ${{ steps.canary-counter.outputs.build-number }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v5
@@ -55,6 +58,22 @@ jobs:
           RELEASE_TYPE="${{ inputs.releaseType || 'canary' }}"
           echo "release-type=$RELEASE_TYPE" >> $GITHUB_OUTPUT
 
+      - name: Increment canary build number
+        id: canary-counter
+        run: |
+          if [[ "${{ steps.set-release-type.outputs.release-type }}" == "canary" && "${{ inputs.dryRun }}" != "true" ]]; then
+            CURRENT=$(gh variable get CANARY_BUILD_NUMBER --repo ${{ github.repository }})
+            NEXT=$((CURRENT + 1))
+            gh variable set CANARY_BUILD_NUMBER --body "$NEXT" --repo ${{ github.repository }}
+            echo "build-number=$NEXT" >> $GITHUB_OUTPUT
+          else
+            # Stable releases or dry-runs: read current value without incrementing
+            CURRENT=$(gh variable get CANARY_BUILD_NUMBER --repo ${{ github.repository }} 2>/dev/null || echo "0")
+            echo "build-number=$CURRENT" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Get release version
         id: release-version
         run: |
@@ -73,6 +92,7 @@ jobs:
     if: needs.prepare.outputs.release-type == 'stable'
     permissions:
       contents: write
+      actions: write   # needed to reset CANARY_BUILD_NUMBER after stable release
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -102,6 +122,12 @@ jobs:
           eval "$CMD"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Reset canary build number after stable release
+        if: inputs.dryRun != true
+        run: gh variable set CANARY_BUILD_NUMBER --body "0" --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-to-npm:
     name: Publish to NPM
@@ -139,7 +165,7 @@ jobs:
       - name: Bump canary version
         if: needs.prepare.outputs.release-type == 'canary'
         run: |
-          bun .github/scripts/bump-version.ts --version=${{ needs.prepare.outputs.version }} --tag=next --suffix=${{ github.run_number }}
+          bun .github/scripts/bump-version.ts --version=${{ needs.prepare.outputs.version }} --tag=next --suffix=${{ needs.prepare.outputs.canary-build-number }}
 
       - name: Install dependencies
         run: bun install
@@ -188,7 +214,7 @@ jobs:
       - name: Update version and JSR config (canary)
         if: needs.prepare.outputs.release-type == 'canary'
         run: |
-          bun .github/scripts/bump-version.ts --version=${{ needs.prepare.outputs.version }} --tag=next --suffix=${{ github.run_number }}
+          bun .github/scripts/bump-version.ts --version=${{ needs.prepare.outputs.version }} --tag=next --suffix=${{ needs.prepare.outputs.canary-build-number }}
           bun .github/scripts/jsrSetup.ts
 
       - name: Update JSR config (stable)
@@ -239,7 +265,7 @@ jobs:
       - name: Bump canary version
         if: needs.prepare.outputs.release-type == 'canary'
         run: |
-          bun .github/scripts/bump-version.ts --version=${{ needs.prepare.outputs.version }} --tag=next --suffix=${{ github.run_number }}
+          bun .github/scripts/bump-version.ts --version=${{ needs.prepare.outputs.version }} --tag=next --suffix=${{ needs.prepare.outputs.canary-build-number }}
 
       - name: Install dependencies
         run: bun install
